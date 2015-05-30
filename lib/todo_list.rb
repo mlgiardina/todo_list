@@ -46,6 +46,9 @@ class TodoList
       delete_entry
       start
     when "4"
+      update_entry
+      start
+    when "5"
       puts "Goodbye!"
       exit
     else
@@ -57,14 +60,23 @@ class TodoList
     puts "\n\nWhat would you like to do?\n"
     puts "(1) Add an entry"
     puts "(2) Mark an entry as completed"
-    puts "(3) Delete Todo"
-    puts "(4) Quit"
+    puts "(3) Delete an Entry"
+    puts "(4) Update an Entry"
+    puts "(5) Quit"
   end
 
   def add_todo
     puts "Add your entry:"
     get_input
     Todo.create(entry: @input)
+  end
+
+  def update_entry
+    puts "Which entry would you like to change?"
+    entry_to_change = get_input
+    puts "What would you like the entry to say?"
+    get_input
+    Todo.update(entry_to_change, entry: @input)
   end
 
   def get_input
