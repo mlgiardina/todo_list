@@ -9,7 +9,7 @@ class TodoList
     view_todos
     display_options
     get_input
-    do_stuff
+    make_changes
   end
 
   def view_todos
@@ -34,7 +34,7 @@ class TodoList
     Todo.delete(@input)
   end
 
-  def do_stuff
+  def make_changes
     case @input
     when "1"
       add_todo
