@@ -14,7 +14,13 @@ class TodoList
 
   def view_todos
     puts "------To Do List------"
-    @todos.each { |item| puts item.id.to_s + " | " + item.entry + " | " + item.completed.to_s }
+    @todos.each { |item| puts item.id.to_s + " | " + item.entry + " | " +
+      if item.completed == false
+        "incomplete"
+      else
+          "complete"
+      end
+    }
   end
 
   def mark_todo_completed
@@ -23,7 +29,9 @@ class TodoList
   end
 
   def delete_entry
-
+    puts "Which entry would you like to delete?"
+    get_input
+    Todo.delete(@input)
   end
 
   def do_stuff
@@ -35,7 +43,8 @@ class TodoList
       mark_todo_completed
       start
     when "3"
-      puts "Which entry would you like to delete?"
+      delete_entry
+      start
     when "4"
       puts "Goodbye!"
       exit

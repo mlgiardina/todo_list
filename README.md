@@ -1,28 +1,9 @@
-This folder structure should be suitable for starting a project that uses a database:
+#To-Do List
+##Description
+This project involved creating a persistent "To-Do List" program that users can view, update, delete, and mark their To-Do's as completed. The To-Do List will save and maintain its state The model skeleton is courtesy of Justin Herrick and can be viewed at <a ref="https://github.com/tiy-austin-ror-may2015/model-skeleton"> his Github</a>.
 
-* Fork this repo
-* Clone this repo
-* `rake generate:migration <NAME>` to create a migration (Don't include the `<` `>` in your name, it should also start with a capital)
-* `rake db:migrate` to run the migration and update the database
-* Create models in lib that subclass `ActiveRecord::Base`
-* ... ?
-* Profit
+##Installation
+To ensure you have all the necessary gems, run `bundle install` from the main directory.
 
-
-## Rundown
-
-```
-.
-├── Gemfile             # Details which gems are required by the project
-├── README.md           # This file
-├── Rakefile            # Defines `rake generate:migration` and `db:migrate`
-├── config
-│   └── database.yml    # Defines the database config (e.g. name of file)
-├── console.rb          # `ruby console.rb` starts `pry` with models loaded
-├── db
-│   ├── dev.sqlite3     # Default location of the database file
-│   ├── migrate         # Folder containing generated migrations
-│   └── setup.rb        # `require`ing this file sets up the db connection
-└── lib                 # Your ruby code (models, etc.) should go here
-    └── all.rb          # Require this file to auto-require _all_ `.rb` files in `lib`
-```
+##How to Use
+To use the program, run `lib/todo_list.rb` from the main directory.
