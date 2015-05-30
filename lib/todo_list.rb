@@ -3,29 +3,37 @@ require_relative './todo.rb'
 
 class TodoList
 
-  def initialize
-    @todos = Todo.all
-  end
 
   def start
+    @todos = Todo.all
     view_todos
     display_options
     get_input
     do_stuff
-
   end
 
   def view_todos
     puts "------To Do List------"
-    @todos.each { |item| puts item.entry }
+    @todos.each { |item| puts item.id.to_s + " | " + item.entry + " | " + item.completed.to_s }
+  end
+
+  def mark_todo_completed
+    puts "Which entry would you like to mark as completed?"
+    Todo.update(get_input, completed: true)
+  end
+
+  def delete_entry
+
   end
 
   def do_stuff
     case @input
     when "1"
       add_todo
+      start
     when "2"
-      puts "Which entry would you like to mark as completed?"
+      mark_todo_completed
+      start
     when "3"
       puts "Which entry would you like to delete?"
     when "4"
@@ -45,7 +53,9 @@ class TodoList
   end
 
   def add_todo
-    Todo.create(entry: response)
+    puts "Add your entry:"
+    get_input
+    Todo.create(entry: @input)
   end
 
   def get_input
